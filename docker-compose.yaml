@@ -1,0 +1,26 @@
+
+services:
+  expo:
+    build:
+      context: .
+      dockerfile: expo.Dockerfile
+      args:
+        #EXPO_DEVTOOLS_LISTEN_ADDRESS: ""
+        UID: ${UID}
+        GID: ${GID}
+    #container_name: expo
+    entrypoint: "sleep infinity"
+    ports:
+      - 8081:8081
+    #  - "19000:19000"
+    #  - "19001:19001"
+    #  - "19002:19002"
+    #environment:
+    #  - EXPO_DEVTOOLS_LISTEN_ADDRESS=
+    env_file:
+      - .env
+    user: "${UID}:${GID}"
+    volumes:
+      - .:/app
+      #- /app/node_modules
+      #- /app/.expo

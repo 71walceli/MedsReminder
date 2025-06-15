@@ -1,0 +1,6 @@
+{
+    "name": "MedsRemind",
+    "dockerComposeFile": "../docker-compose.yaml",
+    "service": "expo",
+    "workspaceFolder": "/app"
+}

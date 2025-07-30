@@ -83,10 +83,10 @@ export default function MedicineReminderApp() {
   }
 
   return (
-    <View className={`min-h-screen ${settings.darkMode ? "dark" : ""} overflow-hidden`}>
-      <View className="bg-background text-foreground min-h-screen flex flex-col">
-        {/* Header */}
-        <View className="bg-primary text-primary-foreground p-4 shadow-sm flex-grow-0 flex-shrink-0">
+    <View className={`app-container safe-area-top ${settings.darkMode ? "dark" : ""}`}>
+      <View className="bg-background text-foreground h-full flex flex-col">
+        {/* Header - Fixed */}
+        <View className="header-fixed bg-primary text-primary-foreground p-4 shadow-sm">
           <View className="flex flex-row items-center justify-between max-w-md mx-auto">
             <h1 className="text-xl font-semibold">MedReminder</h1>
             <Button
@@ -101,22 +101,23 @@ export default function MedicineReminderApp() {
         </View>
 
 
-        {/* Main Content */}
-        <View className="pb-20 px-4 max-w-md  overflow-y-auto flex-grow">
-          {/* Next Upcoming Alarm Card */}
-          {nextUpcomingAlarm && (
-            <View className="bg-blue-50 dark:bg-blue-950 border-l-4 border-blue-500 p-4 mx-4 mt-4 rounded-r-lg">
-              <View className="flex items-center gap-3">
-                <Clock className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                <View>
-                  <Text className="font-medium text-blue-900 dark:text-blue-100">Next: {nextUpcomingAlarm.medicationName}</Text>
-                  <Text className="text-sm text-blue-700 dark:text-blue-300">
-                    {nextUpcomingAlarm.time} • {nextUpcomingAlarm.repeatPattern}
-                  </Text>
+        {/* Main Content - Scrollable */}
+        <View className="content-scrollable">
+          <View className="px-4 max-w-md mx-auto pb-4">
+            {/* Next Upcoming Alarm Card */}
+            {nextUpcomingAlarm && (
+              <View className="bg-blue-50 dark:bg-blue-950 border-l-4 border-blue-500 p-4 mt-4 rounded-r-lg">
+                <View className="flex items-center gap-3">
+                  <Clock className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                  <View>
+                    <Text className="font-medium text-blue-900 dark:text-blue-100">Next: {nextUpcomingAlarm.medicationName}</Text>
+                    <Text className="text-sm text-blue-700 dark:text-blue-300">
+                      {nextUpcomingAlarm.time} • {nextUpcomingAlarm.repeatPattern}
+                    </Text>
+                  </View>
                 </View>
               </View>
-            </View>
-          )}
+            )}
           {currentScreen === "home" && (
             <AlarmListScreen
               alarms={alarms}
@@ -140,11 +141,12 @@ export default function MedicineReminderApp() {
             />
           )}
 
-          {currentScreen === "settings" && <SettingsScreen settings={settings} onUpdateSettings={setSettings} />}
+            {currentScreen === "settings" && <SettingsScreen settings={settings} onUpdateSettings={setSettings} />}
+          </View>
         </View>
 
-        {/* Bottom Navigation */}
-        <View className="fixed bottom-0 left-0 right-0 bg-background border-t border-border flex-grow-0 flex-shrink-0">
+        {/* Bottom Navigation - Fixed */}
+        <View className="bottom-nav-fixed bg-background border-t border-border bottom-nav-safe">
           <View className="flex flex-row justify-around items-center py-2 max-w-md mx-auto">
             <Button
               variant={currentScreen === "home" ? "default" : "ghost"}

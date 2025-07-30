@@ -1,9 +1,8 @@
+import MedicineReminderApp from '@/app/page';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
-import MedicineReminderApp from '@/app/page';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 
@@ -20,6 +19,7 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} backgroundColor="transparent" translucent />
       <MedicineReminderApp />
     </ThemeProvider>
   );

@@ -83,7 +83,7 @@ export default function MedicineReminderApp() {
   }
 
   return (
-    <View className={`min-h-screen ${settings.darkMode ? "dark" : ""}`}>
+    <View className={`min-h-screen ${settings.darkMode ? "dark" : ""} overflow-hidden`}>
       <View className="bg-background text-foreground min-h-screen flex flex-col">
         {/* Header */}
         <View className="bg-primary text-primary-foreground p-4 shadow-sm flex-grow-0 flex-shrink-0">
@@ -92,7 +92,7 @@ export default function MedicineReminderApp() {
             <Button
               variant="ghost"
               size="icon"
-              onPress={() => setSettings((prev) => ({ ...prev, darkMode: !prev.darkMode }))}
+              onClick={() => setSettings((prev) => ({ ...prev, darkMode: !prev.darkMode }))}
               className="text-primary-foreground hover:bg-primary-foreground/20"
             >
               {settings.darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
@@ -149,7 +149,7 @@ export default function MedicineReminderApp() {
             <Button
               variant={currentScreen === "home" ? "default" : "ghost"}
               size="sm"
-              onPress={() => setCurrentScreen("home")}
+              onClick={() => setCurrentScreen("home")}
               className="flex flex-col items-center gap-1 h-auto py-2"
             >
               <Home className="h-5 w-5" />
@@ -159,7 +159,7 @@ export default function MedicineReminderApp() {
             <Button
               variant={currentScreen === "create" ? "default" : "ghost"}
               size="sm"
-              onPress={() => {
+              onClick={() => {
                 setEditingAlarm(null)
                 setCurrentScreen("create")
               }}
@@ -172,7 +172,7 @@ export default function MedicineReminderApp() {
             <Button
               variant={currentScreen === "settings" ? "default" : "ghost"}
               size="sm"
-              onPress={() => setCurrentScreen("settings")}
+              onClick={() => setCurrentScreen("settings")}
               className="flex flex-col items-center gap-1 h-auto py-2"
             >
               <Settings className="h-5 w-5" />

@@ -83,11 +83,14 @@ export default function MedicineReminderApp() {
   }
 
   return (
-    <View className={`app-container safe-area-top ${settings.darkMode ? "dark" : ""}`}>
+    <View className={`app-container ${settings.darkMode ? "dark" : ""}`}>
       <View className="bg-background text-foreground h-full flex flex-col">
         {/* Header - Fixed */}
-        <View className="header-fixed bg-primary text-primary-foreground p-4 shadow-sm">
-          <View className="flex flex-row items-center justify-between max-w-md mx-auto">
+        <View className="header-fixed bg-primary text-primary-foreground shadow-sm">
+          <View className="flex safe-area-top bg-black relative top-0 left-0 right-0">
+            {/* Statusbar placeholder */}
+          </View>
+          <View className="flex flex-row items-center justify-between max-w-md mx-auto p-4">
             <h1 className="text-xl font-semibold">MedReminder</h1>
             <Button
               variant="ghost"
